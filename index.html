@@ -144,6 +144,84 @@
         </ul>
     </div>
 </div>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dynamic MCQ Quiz</title>
+    <style>
+        body { font-family: sans-serif; background: #f4f7f6; padding: 20px; max-width: 800px; margin: auto; }
+        .question-card { background: white; padding: 20px; margin-bottom: 20px; border-radius: 8px; }
+        .options label { display: block; padding: 10px; margin-bottom: 5px; background: #f9f9f9; cursor: pointer; }
+        .explanation { display: none; margin-top: 15px; padding: 10px; background: #fff3cd; }
+        button { padding: 15px; background: #2980b9; color: white; border: none; width: 100%; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <h1>GTA RCM Quiz</h1>
+    <div id="quiz-container"></div>
+    <button onclick="submitQuiz()">Submit Answers</button>
+    <h2 id="result" style="display:none;"></h2>
+
+    <script>
+        // 👇 JUST ADD YOUR QUESTIONS HERE! 👇
+        const questions = [
+            {
+                question: "1. Who is liable to pay GST when a GTA provides services to an unregistered Association of Persons?",
+                options: {
+                    a: "The GTA",
+                    b: "The Consignor",
+                    c: "The Association of Persons under RCM",
+                    d: "It is exempt"
+                },
+                answer: "c",
+                explanation: "An AOP falls under the definition of a partnership firm, making them a specified recipient."
+            },
+            {
+                question: "2. Your Next Question Here?",
+                options: { a: "Option A", b: "Option B", c: "Option C", d: "Option D" },
+                answer: "b",
+                explanation: "Because the law says so."
+            }
+        ];
+        // 👆 END OF QUESTIONS 👆
+
+        // The code below automatically builds the HTML for you
+        const container = document.getElementById('quiz-container');
+        
+        questions.forEach((q, index) => {
+            let optionsHTML = '';
+            for (const [key, value] of Object.entries(q.options)) {
+                optionsHTML += `<label><input type="radio" name="q${index}" value="${key}"> ${value}</label>`;
+            }
+            container.innerHTML += `
+                <div class="question-card">
+                    <p><strong>${q.question}</strong></p>
+                    <div class="options">${optionsHTML}</div>
+                    <div class="explanation" id="exp${index}"><strong>Explanation:</strong> ${q.explanation}</div>
+                </div>`;
+        });
+
+        function submitQuiz() {
+            let score = 0;
+            questions.forEach((q, index) => {
+                const selected = document.querySelector(`input[name="q${index}"]:checked`);
+                const exp = document.getElementById(`exp${index}`);
+                exp.style.display = 'block';
+                if (selected && selected.value === q.answer) {
+                    score++;
+                    exp.innerHTML = `<span style="color:green;">Correct!</span> ` + exp.innerHTML;
+                } else {
+                    exp.innerHTML = `<span style="color:red;">Incorrect.</span> ` + exp.innerHTML;
+                }
+            });
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('result').innerText = `You scored ${score} out of ${questions.length}!`;
+        }
+    </script>
+</body>
+</html>
 
 <script>
     function filterTopics() {
