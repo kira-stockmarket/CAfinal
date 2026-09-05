@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CA Final / GST MCQ Master Vault</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+            --border: #e2e8f0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: 8px;
+            color: #0f172a;
+        }
+
+        #searchBox {
+            width: 100%;
+            padding: 12px 16px;
+            font-size: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            box-sizing: border-box;
+            margin-bottom: 25px;
+            outline: none;
+        }
+
+        #searchBox:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .chapter-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .chapter-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1e40af;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 8px;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .topic-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .topic-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: inherit;
+            transition: background 0.2s;
+        }
+
+        .topic-item:hover {
+            background-color: #eff6ff;
+        }
+
+        .topic-name {
+            font-weight: 500;
+        }
+
+        .badge {
+            font-size: 0.75rem;
+            background: #dbeafe;
+            color: #1d4ed8;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>GST Law Mastery Vault</h1>
+        <p>Select a chapter and topic to practice interactive MCQs.</p>
+    </header>
+
+    <input type="text" id="searchBox" placeholder="Search by topic or section (e.g., GTA, Section 17(5))..." onkeyup="filterTopics()">
+
+    <!-- Chapter 1 -->
+    <div class="chapter-card">
+        <h2 class="chapter-title">Chapter 1: Charge of GST & RCM</h2>
+        <ul class="topic-list">
+            <li>
+                <a href="chapters/01-charge-of-gst/gta-rcm.html" class="topic-item">
+                    <span class="topic-name">Goods Transport Agency (GTA) Reverse Charge</span>
+                    <span class="badge">Advanced</span>
+                </a>
+            </li>
+            <!-- Add more Chapter 1 topics below -->
+        </ul>
+    </div>
+
+    <!-- Chapter 2 -->
+    <div class="chapter-card">
+        <h2 class="chapter-title">Chapter 2: Place of Supply</h2>
+        <ul class="topic-list">
+            <li>
+                <a href="chapters/02-place-of-supply/pos-services.html" class="topic-item">
+                    <span class="topic-name">Place of Supply of Immovable Property Services</span>
+                    <span class="badge">Intermediate</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function filterTopics() {
+        const query = document.getElementById('searchBox').value.toLowerCase();
+        const items = document.querySelectorAll('.topic-item');
+
+        items.forEach(item => {
+            const text = item.textContent.toLowerCase();
+            const parentLi = item.parentElement;
+            if (text.includes(query)) {
+                parentLi.style.display = "";
+            } else {
+                parentLi.style.display = "none";
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
